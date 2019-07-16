@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><link href="../../static/css/bootstrap.min.css" rel="stylesheet"></head>
+<body>
+   <table th:fragment="itemsReparacion" class="d-none">
+      <tbody id="plantillaItemsReparacion">
+         <tr id="row_{ID}">
+            <td class="d-none"><input type="hidden" value="{ID}" name="item_id[]" /></td>
+            <td>{SERIE}</td>
+            
+            <td>
+               <select class="form-control-sm" name="cedi_id[]">
+                  <option th:each="c : ${listacedis}" th:value="${c.id}" th:text="${c.nombre}"></option>
+               </select>
+            </td>
+            
+            <td>
+               <select class="form-control-sm" name="status_id[]" >
+                  <option th:each="s : ${listastatus}" th:value="${s.id}" th:text="${s.descripcion}"></option>
+               </select>
+            </td>
+            
+            <td>
+                <select class="form-control-sm" name="problema_id[]">
+                  <option th:each="p : ${listaproblemas}" th:value="${p.id}" th:text="${p.descripcion}"></option>
+               </select>
+            </td>
+            
+            <td>
+               <select class="form-control-sm" name="empleado_id[]">
+                  <option th:each="e : ${listaempleados}" th:value="${e.id}" th:text="${e.nombre}"></option>
+               </select>
+            </td>
+            
+            <td>
+               <div ><input type="text" name="falla[]" class="form-control-sm"></div>
+            </td>
+            
+            <!-- <td>
+               <input type="text" name="ro[]" id="ro_{ID}" class="form-control">
+            </td>
+            
+            <td>
+               <input type="date" name="fecenvio[]" id="fecenvio_{ID}" class="form-control col-sm-4">
+            </td>
+            
+            <td>
+               <input type="date" name="fecretorno[]" id="fecretorno_{ID}" class="form-control col-sm-4">
+            </td> -->
+            
+            <td><a href="#" class="btn btn-danger btn-sm" onclick="itemHelper.eliminaLinea({ID});">X</a></td>
+         
+         </tr>
+      </tbody>
+   </table>
+   
+   <table th:fragment="itemsMovactivos" class="d-none">
+      <tbody id="plantillaItemsMovactivos">
+         <tr id="row_{ID}">
+            <td class="d-none"><input type="hidden" value="{ID}" name="item_id[]" /></td>
+            <td>{SERIE}</td>            
+            <td>{AFIJO}</td>
+            <td>{MODELO}</td>            
+            <td><a href="#" class="btn btn-danger btn-sm" onclick="itemHelper.eliminaLinea({ID});">X</a></td>         
+         </tr>
+      </tbody>
+   </table>
+   
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<nav th:fragment="paginator">
+		<p class="float-left"
+			th:text="'Pagina '+${page.paginaActual} + ' de ' + ${page.totalPaginas}"></p>
+		<p class="float-right "
+			th:text="'Total de Registros: '+ ${page.totalElementos}"></p>
+		<ul class="pagination justify-content-center">
+			<li id="Inicio" class="page-item"
+				th:class="${page.first ? 'page-item disabled text-secondary' : 'page-item'}">
+				<span class="page-link" th:if="${page.first}">Inicio</span> <a
+				class="page-link" th:if="${not page.first}"
+				th:href="@{${page.url}(page=0)}">Inicio</a>
+			</li>
+			<li id="Anterior" class="page-item"
+				th:class="${not page.hasPrevious ? 'page-item disabled text-secondary' : 'page-item'}">
+				<span class="page-link" th:if="${not page.hasPrevious}">&laquo;</span>
+				<a class="page-link" th:if="${page.hasPrevious}"
+				th:href="@{${page.url}(page=${page.paginaActual - 2})}">&laquo;</a>
+			</li>
+			<li th:each="item : ${page.paginas}" class="page-item"
+				th:class="${item.actual ? 'page-item active' : 'page-item'}"><span
+				class="page-link active" th:if="${item.actual}"
+				th:text="${item.numero}"></span> <a class="page-link"
+				th:if="${not item.actual}" th:text="${item.numero}"
+				th:href="@{${page.url}(page=${item.numero -1})}"></a></li>
+			<li id="Siguiente" class="page-item"
+				th:class="${not page.hasNext ? 'page-item disabled text-secondary' : 'page-item'}">
+				<span class="page-link" th:if="${not page.hasNext}">&raquo;</span> <a
+				class="page-link" th:if="${page.hasNext}"
+				th:href="@{${page.url}(page=${page.paginaActual})}">&raquo;</a>
+			</li>
+			<li id="Ultimo" class="page-item"><span
+				class="page-link disabled text-secondary" th:if="${page.last}">Fin</span>
+				<a class="page-link" th:if="${not page.last}"
+				th:href="@{${page.url}(page=${page.totalPaginas -1})}">Fin</a></li>
+		</ul>
+	</nav>
+
+	<div class="row" th:fragment="newpaginator">
+		<div class="col-sm-4">
+			<div sd:pagination-summary="default">info</div>
+		</div>
+		<div class="col-sm-8">
+			<nav class="pull-right">
+				<ul class="pagination" sd:pagination-split="7" sd:pagination="full">
+					<!-- Pagination created by SpringDataDialect, this content is just for mockup -->
+				</ul>
+			</nav>
+		</div>
+	</div>
+
+
+</body>
+</html>

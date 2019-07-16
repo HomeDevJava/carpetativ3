@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}"
+xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container-fluid py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <div th:replace="layout/btnform :: agregar (obj='/empleados')"></div>
+			<div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">#Empleado</th>
+                     <th class="col-auto">Nombre</th>
+                     <th class="col-auto">Email</th>
+                     <th class="col-auto">Telefono</th>
+                     <th class="col-auto">Puesto</th>
+                     <th class="col-auto">Cedis</th>
+                     <th class="col-auto">Acciones</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center font-weight-light" th:each="empleado : ${lista}">
+                     <td th:text="${empleado.id}" class="text-info font-weight-bold"></td>
+                     <td th:text="${empleado.numempleado}"></td>
+                     <td th:text="${empleado.nombre} +' ' +${empleado.apellidos}"></td>
+                     <td th:text="${empleado.email}"></td>
+                     <td th:text="${empleado.telefono}"></td>
+                     <td th:text="${empleado.puesto.nombre}"></td>
+                     <td th:text="${empleado.cedi.nombre}"></td>
+                     <td class="text-center">
+                        <div th:replace="layout/btnform :: acciones(url='/empleados',obj=${empleado})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <div th:replace="layout/paginator-nav :: newpaginator"></div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

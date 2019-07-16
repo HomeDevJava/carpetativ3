@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+<link href="../../static/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+   <div layout:fragment="content">
+      <div class="card">
+         <div class="card-header bg-light text-primary  display-4" th:text="${titulo}"></div>
+         <div class="card-body">
+            
+            <div th:replace="layout/btnform :: regresar (obj='/marcas')"></div>
+
+            <ul class="list-group shadow p-3 mb-5 bg-white rounded">
+               <li class="list-group-item" th:text="${marca.id}"></li>
+               <li class="list-group-item" th:text="${marca.nombre}"></li>
+            </ul>
+            <div th:if="${#lists.isEmpty(marca.modelo)}" class="alert alert-info" th:text="'No hay Modelos asignados a esta Marca'"></div>
+            <table th:if="${not #lists.isEmpty(marca.modelo)}" class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <td>Id</td>
+                     <td>Modelo</td>
+                     <td>tipo de dispositivo</td>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr th:each="modelo : ${marca.modelo}" class="text-center">
+                     <td th:text="${modelo.id}"></td>
+                     <td th:text="${modelo.nombre}"></td>
+                     <td th:text="${modelo.device.nombre}"></td>
+                  </tr>
+               </tbody>
+            </table>
+
+            <div th:replace="layout/btnform :: regresar (obj='/marcas')"></div>
+
+         </div>
+      </div>
+   </div>
+</body>
+</html>

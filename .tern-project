@@ -1,0 +1,41 @@
+{
+  "ecmaVersion": 6,
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "complete_strings": {
+      
+    },
+    "node": {
+      
+    },
+    "browser-extension": {
+      
+    },
+    "node-extension": {
+      
+    },
+    "node-mongodb-native": {
+      
+    },
+    "bootstrap": {
+      
+    },
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-extension": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "ecma6",
+    "browser",
+    "jquery"
+  ]
+}

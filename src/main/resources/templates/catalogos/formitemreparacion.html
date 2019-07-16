@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../static/css/all.min.css">
+</head>
+<body>
+   <form th:action="@{/reparaciones/guardaritem}" th:object="${item}" method="post">
+      
+      <div class="modal-header">
+         <h4>Editar Registro <span th:text="*{equipo.serie}" ></span></h4>
+         <div class="float-right">
+            <button id="envio" type="submit" name="envio" class="btn btn-success btn-sm">
+               <span class="fas fa-save" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+      </div>
+
+      <div class="modal-body">
+         <div class="form-row">
+            <input type="hidden" th:field="*{id}" class="form-control">
+            <input type="hidden" th:field="*{reparacion.id}" class="form-control">
+            <input th:field="*{equipo}" type="hidden" class="form-control">
+
+            
+
+            <div class="form-group col-md-4">
+               <h4 class="my-0">
+                  <label class="col-form-label">Cedis</label>
+               </h4>
+               <select class="form-control" th:field="*{cedi}">
+                  <option th:each="c : ${listacedis}" th:value="${c.id}" th:text="${c.nombre}"></option>
+               </select>
+            </div>
+
+            <div class="form-group col-md-4">
+               <h4 class="my-0">
+                  <label class="col-form-label">Status</label>
+               </h4>
+               <select class="form-control" th:field="*{status}">
+                  <option th:each="s : ${listastatus}" th:value="${s.id}" th:text="${s.descripcion}"></option>
+               </select>
+            </div>
+            
+            <div class="form-group col-md-4">
+               <h4 class="my-0 text-info">
+                  <label class="col-form-label">#RO</label>
+               </h4>
+               <input th:field="*{ro}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+            </div>
+
+            <div class="form-group col-sm-6">
+               <h4 class="my-0">
+                  <label class="col-form-label">Fecha de Envio</label>
+               </h4>
+               <input th:field="*{fecenvio}" type="date" class="form-control" th:errorclass="'form-control alert-danger'">
+            </div>
+
+            <div class="form-group col-sm-6">
+               <h4 class="my-0">
+                  <label class="col-form-label">Fecha de Retorno</label>
+               </h4>
+               <input th:field="*{fecretorno}" type="date" class="form-control" th:errorclass="'form-control alert-danger'">
+            </div>
+
+            <div class="form-group col-sm-6">
+               <h4 class="my-0">
+                  <label class="col-form-label">Empleado</label>
+               </h4>
+               <select class="form-control" th:field="*{empleado}">
+                  <option th:each="e : ${listaempleados}" th:value="${e.id}" th:text="${e.nombre}+' '+${e.apellidos}"></option>
+               </select>
+            </div>
+
+            <div class="form-group col-sm-6">
+               <h4 class="my-0">
+                  <label class="col-form-label">Tipo Problema</label>
+               </h4>
+               <select class="form-control" th:field="*{tipoproblema}">
+                  <option th:each="s : ${listaproblemas}" th:value="${s.id}" th:text="${s.descripcion}"></option>
+               </select>
+            </div>
+
+            
+
+            <div class="form-group col-sm-12">
+               <h4 class="my-0">
+                  <label class="col-form-label">Falla</label>
+               </h4>
+               <textarea th:field="*{falla}" class="form-control" th:errorclass="'form-control alert-danger'"></textarea>
+            </div>
+
+         </div>
+
+      </div>
+
+      <!--  <div class="modal-footer">
+         <div class="form-group">
+            <button id="envio" type="submit" name="envio" class="btn btn-success btn-sm">
+               <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span> Aceptar
+            </button>
+         </div>
+      </div> -->
+
+   </form>
+</body>
+</html>

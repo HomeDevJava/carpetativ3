@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><link href="../../static/css/bootstrap.min.css" rel="stylesheet"></head>
+<body>
+  
+   <table id="tabla1" th:fragment="itemsMovactivos" class="d-none">
+      <tbody id="plantillaItemsMov">
+         <tr id="row_{ID}">
+            <td class="d-none"><input type="hidden" value="{ID}" name="item_id[]" /></td>
+            <td>{SERIE}</td>            
+            <td>{AFIJO}</td>
+            <td>{MODELO}</td>            
+            <td><a href="#" class="btn btn-danger btn-sm" onclick="itemHelper.eliminaLinea({ID});">X</a></td>         
+         </tr>
+      </tbody>
+   </table>
+   
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../static/css/all.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <div th:replace="layout/btnform :: agregar (obj='/status')"></div>
+
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">Descripcion</th>
+                     <th class="col-auto">Acciones</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr th:each="status : ${lista}">
+                     <td th:text="${status.id}" class="text-info font-weight-bold"></td>
+                     <td th:text="${status.descripcion}"></td>
+                     <td class="text-center">
+                        <div th:replace="layout/btnform :: acciones(url='/status',obj=${status})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

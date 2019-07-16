@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.thymeleaf.org/spring-data" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <div th:replace="layout/btnform :: agregar (obj='/modelos')"></div>
+			<div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">Descripcion</th>
+                     <th class="col-auto">Marca</th>
+                     <th class="col-auto">Tipo de dispositivo</th>
+                     <th class="col-auto">Acciones</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr th:each="modelo : ${lista}">
+                     <td th:text="${modelo.id}" class="text-info font-weight-bold"></td>
+                     <td th:text="${modelo.nombre}"></td>
+                     <td th:text="${modelo.marca.nombre}"></td>
+                     <td th:text="${modelo.device.nombre}"></td>
+                     <td class="text-center">                        
+                        <div th:replace="layout/btnform :: acciones(url='/modelos',obj=${modelo})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <div th:replace="layout/paginator-nav :: newpaginator"></div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

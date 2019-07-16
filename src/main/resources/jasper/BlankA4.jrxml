@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BlankA4" pageWidth="612" pageHeight="792" whenNoDataType="AllSectionsNoDetail" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="f1b085c4-2fb5-46c0-8100-be85e2294b00">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="HTTP_DATA_URL" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[URL To get file from]]></parameterDescription>
+		<defaultValueExpression><![CDATA["http://someurl.com"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HTTP_DATA_URL_PARAMETER_" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[URL Parameter prefix]]></parameterDescription>
+		<defaultValueExpression><![CDATA["prm"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="HTTP_DATA_POST_PARAMETER_" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[POST request parameter prefix]]></parameterDescription>
+		<defaultValueExpression><![CDATA["prm"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="mov" class="org.carpetati.spring.app.entity.Movactivo"/>
+	<parameter name="series" class="java.lang.String"/>
+	<parameter name="activos" class="java.lang.String"/>
+	<parameter name="modelos" class="java.lang.String" evaluationTime="Late">
+		<defaultValueExpression><![CDATA[$P{mov}.getItems()]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="125" y="0" width="327" height="61" backcolor="#EEEAEA" uuid="2f63ecef-720d-47d2-a97e-925474b476ee"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineColor="#FCFCEB"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="125" y="20" width="327" height="41" uuid="137a8c38-12f0-4dbd-ba76-d1fe04273c6c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="10"/>
+				</textElement>
+				<text><![CDATA[Calle 60 Diagonal No. 501 Fracc Parque Industrial Yucatan C.P. 97300
+Mérida, Yucatán, México RFC IRE820805HA3
+Tel: 01 (999) 942-52-00 ó 24    Fax: 01 (999) 942-52-25]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="0" width="327" height="20" uuid="4b41dc02-bc76-4737-bf15-bd17a06134ea"/>
+				<textElement textAlignment="Center">
+					<font fontName="Calibri" size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INDUSTRIA DE REFRESCOS, S DE RL DE CV]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="456" y="0" width="114" height="61" uuid="e8992b05-bdfb-4e68-906f-8fb301f3d1f8"/>
+				<rectangle>
+					<reportElement x="10" y="0" width="100" height="31" backcolor="#0033FF" uuid="470b80d6-a910-4f7d-8dcf-6f682aee65e5"/>
+					<graphicElement>
+						<pen lineWidth="1.25" lineColor="#FCFCEB"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="14" y="0" width="100" height="31" forecolor="#FFFFFF" uuid="8f8bc133-cb71-47f3-853a-8a06cc0b0e3a"/>
+					<textElement textAlignment="Center">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MOVIMIENTO DE
+ACTIVOS FIJOS]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="10" y="31" width="100" height="30" uuid="accce87d-7292-401e-b17b-7b87a3ae7501"/>
+					<box>
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{mov}.getId()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<detail>
+		<band height="13" splitType="Stretch"/>
+	</detail>
+	<summary>
+		<band height="639" splitType="Stretch">
+			<frame>
+				<reportElement positionType="Float" x="-6" y="7" width="111" height="35" backcolor="#0033FF" uuid="fa499efe-c3bc-4851-95b5-a7a3c2d1973c"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="111" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="879f9504-d432-44ad-ae6c-d1a036e50f2f"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#0F0F0F"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="111" height="20" uuid="1f31f742-8858-4fff-8a6d-d8b4a7692978"/>
+					<box padding="1">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getFecha()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement x="123" y="8" width="443" height="185" uuid="97b334ff-92b0-4a08-a818-91c6ed891402"/>
+				<box>
+					<pen lineColor="#D6D6D6"/>
+				</box>
+				<staticText>
+					<reportElement x="17" y="25" width="168" height="15" uuid="af020e08-a8a0-46df-8b05-51dc8945fb05"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Origen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="17" y="63" width="168" height="15" uuid="dc5aa6af-f4ba-4321-ba9f-61e85fe3dcef"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Destino]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="17" y="103" width="168" height="15" uuid="820474c5-b6f6-4a70-aeec-b056308c82b5"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Domicilio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="25" width="96" height="15" uuid="395c24d2-c6b1-4532-9573-ad6d1636d48c"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[No. de Sinca]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="50" width="96" height="15" uuid="92bca1b1-5685-45ac-aa9c-bb402baea73c"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Medio de Envio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="76" width="96" height="15" uuid="b2654984-39ce-4864-adce-11a6b3003795"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Placas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="314" y="50" width="114" height="20" uuid="0bff961d-b1e5-4f87-9e7c-57328b8a91b6"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[FLETE INTERNO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="214" y="100" width="214" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="875ba4be-cae9-4bce-85cf-d085d803249e"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Firma y Nombre del Chofer]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="161" width="96" height="20" uuid="c471bc16-15fd-4693-a947-f588f2c492ec"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Fecha de Salida]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="17" y="0" width="411" height="18" forecolor="#FFFFFF" backcolor="#0033FF" uuid="9545e036-f6ac-4d20-95d9-0598d058d9fe"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#0A0A0A"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="13" isBold="true"/>
+					</textElement>
+					<text><![CDATA[S A L I D A]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="17" y="40" width="168" height="20" uuid="c29cb5e9-ad5c-4e30-a477-f830bff197c3"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getOrigen().getNombre()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="17" y="78" width="168" height="20" uuid="23108532-2206-4052-853e-8dcf631a7ca6"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getDestino().getNombre()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="17" y="118" width="168" height="59" uuid="1693e6bb-8f40-4735-b201-e67fb0b3b0d0"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getOrigen().getDomicilio()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="314" y="161" width="114" height="20" uuid="fc9474f2-4d7f-4f66-b820-d563053fabcb"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[     /         /]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="-6" y="48" width="111" height="145" uuid="9d008e4f-7206-419f-a066-f9b23c4df72c"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="21" y="109" width="90" height="15" uuid="e3b29fd5-b9f3-4439-bba1-584249f86a02"/>
+					<text><![CDATA[Definitivo]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="4" y="16" width="14" height="14" uuid="6b13bd76-30be-401b-b526-94f965a22f2d"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="4" y="36" width="14" height="14" uuid="db0ea753-9b45-4932-8c43-971c452df32f"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="4" y="76" width="14" height="14" uuid="81cf743b-2162-495c-b550-beea5d9aa4d5"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="21" y="15" width="90" height="15" uuid="171552ea-eb43-497d-80d0-2cc65b8fd3eb"/>
+					<text><![CDATA[Maquinaria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="111" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="3a9c9189-9f13-4e3c-ac6a-f4cbbefafef8"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#0A0A0A"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de Activo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="35" width="83" height="15" uuid="08dec1d7-8077-4cc3-8d7b-d437aaf540fe"/>
+					<text><![CDATA[Eq. de Transporte]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="76" width="90" height="15" uuid="633f3003-9aa9-4e6c-8aa6-3b48f1d6c386"/>
+					<text><![CDATA[Mobiliario Oficina]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="56" width="90" height="15" uuid="6f45a371-92b1-4229-a793-5cdae18466c4"/>
+					<text><![CDATA[Eq. de Computo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="127" width="90" height="15" uuid="700bc6e9-e6ca-4570-9b2d-ced431910395"/>
+					<text><![CDATA[Temporal]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="93" width="111" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="7ca5e327-9b65-42d4-a3d3-0a3ac84b6e8d"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#080808"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de Movimiento]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="4" y="127" width="15" height="15" uuid="d212dee7-e45c-40b9-aa3c-3c9350c55c13"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="4" y="56" width="15" height="15" uuid="c25452c3-92ec-4960-98b0-45d3ae4c2d87"/>
+					<box padding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[X]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="110" width="15" height="15" uuid="0c9426bc-b365-4d99-8195-5b536f770589"/>
+					<box padding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[X]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="-6" y="199" width="179" height="83" backcolor="#0033FF" uuid="7447b267-d6cb-4de8-9bee-7430ed835365"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="179" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="bc878090-fa05-41aa-b305-c927a22598f5"/>
+					<box>
+						<pen lineColor="#0A0A0A"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[No. de Activo(FA)]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="179" height="68" uuid="8cf84e91-3fec-4a81-9ee1-09195a269b5d"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{activos}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="184" y="199" width="166" height="83" backcolor="#0033FF" uuid="f69e70fd-4535-4fed-8b93-1958a3fd2919"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="166" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="c4ac375e-6e61-4a1e-a0fc-268903006271"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#0D0C0C"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Modelo]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="166" height="68" uuid="dbbcf102-2e7f-410a-8848-514416ca2083"/>
+					<box padding="1">
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{modelos}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="363" y="199" width="202" height="83" backcolor="#0033FF" uuid="d07dfe79-ca76-445c-a6fd-6e54eda04acf"/>
+				<staticText>
+					<reportElement stretchType="ElementGroupHeight" mode="Opaque" x="0" y="0" width="202" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="928df9bd-bee2-4d7b-954c-71c71dc55c09"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<pen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+						<paragraph lineSpacing="Single"/>
+					</textElement>
+					<text><![CDATA[No. de Serie]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="202" height="68" uuid="e3b7e5b6-5bdf-4bdf-8eee-e95046406d20"/>
+					<box padding="1">
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{series}]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="-6" y="284" width="179" height="35" backcolor="#0033FF" uuid="304bff5c-8e71-487b-a828-50e05c2d8dd8"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="179" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="b371ae18-1636-4956-9211-6fe6839d2bdf"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#050505"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Caracteristicas]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="179" height="19" uuid="fed1edfb-5d0b-450c-8a94-23f533ab622e"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$P{mov}.getCaracteristica()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="184" y="284" width="166" height="35" backcolor="#0033FF" uuid="d3be3f9c-83c7-43ec-8e8d-4bf71d19549a"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="166" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="8d409138-f16e-4ac0-985f-6b92a715b1fa"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#080808"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Persona a quien se envia]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="166" height="19" uuid="78663955-abc3-4739-ac14-f100c46433d9"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$P{mov}.getEmpleado().getNombre() + " " +$P{mov}.getEmpleado().getApellidos()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="363" y="284" width="202" height="35" backcolor="#0033FF" uuid="99dce90e-a83a-4e9e-8881-9af81c1c41cc"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="202" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="c389c787-9581-4792-84f5-1f3dbd9f943c"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#080808"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Motivo]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="15" width="202" height="19" uuid="b0da5b87-c823-4f16-976e-bc1d3d37b1ac"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$P{mov}.getMotivo()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="-6" y="321" width="179" height="56" backcolor="#0033FF" uuid="0a9403bc-bed7-41f8-9872-a66bb788fbfc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="179" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="d0e05e76-0dcd-49a4-944e-b3837cfa1aa0"/>
+					<box>
+						<pen lineColor="#D6D6D6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Abel J. Ramos Nakamura]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="178" y="321" width="180" height="56" backcolor="#0033FF" uuid="09f0dd29-fb5d-4f58-94a2-91034bb88af7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="180" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="4eed408e-2596-4f5c-9d2a-497a41b4ebc1"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#D6D6D6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Caseta de Vigilancia Origen]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="363" y="321" width="202" height="56" backcolor="#0033FF" uuid="15e06ba5-715a-4c9e-803e-a657415b9401"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="202" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="5cff1e6b-01c8-4b0c-bb4f-e74b26168e29"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#D6D6D6"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Caseta de Vigilancia Destino]]></text>
+				</staticText>
+			</frame>
+			<line>
+				<reportElement x="-6" y="381" width="571" height="1" uuid="41788d27-dbcb-4bc2-9298-bbab2a717fd1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<frame>
+				<reportElement x="122" y="387" width="328" height="62" uuid="692328f6-692b-4aa8-a4e0-17ed07933b90"/>
+				<rectangle>
+					<reportElement x="1" y="1" width="327" height="61" backcolor="#EEEAEA" uuid="18928961-0baf-4396-97da-3521eccc8b68"/>
+					<graphicElement>
+						<pen lineWidth="1.25" lineColor="#FCFCEB"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="0" y="1" width="327" height="20" uuid="49790261-2cbe-431f-8f53-62f76380bb7c"/>
+					<textElement textAlignment="Center">
+						<font fontName="Calibri" size="15" isBold="true"/>
+					</textElement>
+					<text><![CDATA[INDUSTRIA DE REFRESCOS, S DE RL DE CV]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="21" width="327" height="41" uuid="a8782cd6-4402-49f1-9ee9-9e269ec170c4"/>
+					<textElement textAlignment="Center">
+						<font fontName="Calibri" size="10"/>
+					</textElement>
+					<text><![CDATA[Calle 60 Diagonal No. 501 Fracc Parque Industrial Yucatán C.P. 97300
+Mérida, Yucatán, México RFC IRE820805HA3
+Tel: 01 (999) 942-52-00 ó 24    Fax: 01 (999) 942-52-25]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="466" y="388" width="100" height="57" uuid="627c2d1b-30b5-418b-977e-64ead61825f1"/>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="31" forecolor="#FFFFFF" backcolor="#0033FF" uuid="5b0b8ede-f5e2-46a8-a822-ee6c086d28b7"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#050505"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[MOVIMIENTO DE
+ACTIVOS FIJOS]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="0" y="31" width="100" height="26" uuid="464b1fb4-18e5-4e91-8a6f-e9a8103fe4bd"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{mov}.getId()]]></textFieldExpression>
+				</textField>
+			</frame>
+			<frame>
+				<reportElement positionType="Float" x="-2" y="454" width="111" height="35" backcolor="#0033FF" uuid="2f820883-043c-4785-aa79-7765f49aa2e5"/>
+				<textField>
+					<reportElement x="0" y="15" width="111" height="20" uuid="f1a8b289-4443-44c5-8f8c-fb52bbf73f68"/>
+					<box padding="1">
+						<pen lineWidth="0.5"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getFecha()]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="111" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="7feb067f-e6c7-48de-9e49-807828d98801"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#0F0F0F"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fecha]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="-2" y="495" width="111" height="144" uuid="ce680d37-67bb-483a-9f6a-767296284184"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<rectangle>
+					<reportElement x="4" y="18" width="14" height="14" uuid="e2caec3f-67e6-4173-8964-d07a3d6f8d02"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="4" y="36" width="14" height="14" uuid="f1d076d6-9192-45a6-a80d-afb7cb378a92"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="4" y="74" width="14" height="14" uuid="f94007fa-d1e0-4392-9e43-ceb9dcace46a"/>
+				</rectangle>
+				<rectangle>
+					<reportElement x="4" y="127" width="14" height="14" uuid="c3e8f39a-ee57-4f7c-b060-14672fafa13c"/>
+				</rectangle>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="111" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="03c55db0-ff67-4e31-bc8d-195e0a857981"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#0A0A0A"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de Activo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="17" width="90" height="15" uuid="ecd1f609-c33f-4154-b599-18c5af50e3cc"/>
+					<text><![CDATA[Maquinaria]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="35" width="90" height="15" uuid="2d1356f8-2c79-4932-a308-109efed3c605"/>
+					<text><![CDATA[Eq. de Transporte]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="74" width="90" height="15" uuid="ee970224-ade7-4641-9d56-6298f0570bd2"/>
+					<text><![CDATA[Mobiliario Oficina]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="54" width="90" height="15" uuid="545fbd8e-00d8-42cb-8c53-850c6941f602"/>
+					<text><![CDATA[Eq. de Computo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="92" width="111" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="d35a52f9-5475-43b5-a0ff-f7c3dd8f2662"/>
+					<box>
+						<pen lineWidth="0.5" lineColor="#080808"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tipo de Movimiento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="110" width="90" height="15" uuid="4b721016-a17f-4cc3-b4c1-b1be07892d59"/>
+					<text><![CDATA[Definitivo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="21" y="126" width="90" height="15" uuid="ea22514b-b13b-4cfa-949c-0076af3d08e6"/>
+					<text><![CDATA[Temporal]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="110" width="15" height="15" uuid="9e3c1a4c-90bf-4bf7-9363-0efb980d3d01"/>
+					<box padding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[X]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="4" y="54" width="15" height="15" uuid="6bfdc21a-57e1-4f5d-a3d8-1e00e8e2c158"/>
+					<box padding="0">
+						<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[X]]></text>
+				</staticText>
+			</frame>
+			<frame>
+				<reportElement x="123" y="454" width="443" height="185" uuid="f9f1388b-2eca-41d2-a3a4-c0041cda643b"/>
+				<staticText>
+					<reportElement x="17" y="25" width="83" height="15" uuid="3eeb2b2d-78ed-4950-a502-fb097538e195"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Origen]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="17" y="63" width="168" height="15" uuid="c95cccc8-5907-44ae-803c-5d436e417e31"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Destino]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="17" y="103" width="168" height="15" uuid="64271391-48fa-4120-9fd7-b3fd9345fe98"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Condiciones del Activo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="25" width="96" height="15" uuid="1e7a2317-a618-4ce4-a229-8ca25d8b5897"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[No. de Sinca]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="50" width="96" height="15" uuid="72a5bd4f-b9b7-42d9-b102-5a1195873391"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Medio de Envio]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="76" width="96" height="15" uuid="3a0658e7-0615-4f79-b85b-b510901c74ac"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Placas]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="314" y="50" width="114" height="20" uuid="8fb92080-00c5-4f50-b2b8-01c53413efe5"/>
+					<text><![CDATA[FLETE INTERNO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="314" y="76" width="114" height="20" uuid="59be5520-9e6e-4013-902a-0e383b87ef56"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="115" width="214" height="42" uuid="a1ee5981-7c7e-4768-980d-2f26149c9f48"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="214" y="161" width="100" height="20" uuid="bf22b150-f84b-4b9f-8d03-7ab47dc75f57"/>
+					<textElement>
+						<font fontName="Calibri" size="12" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Fecha de Entrada]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="314" y="161" width="114" height="20" uuid="257754a3-98a6-439b-8ea6-adcbe252bebd"/>
+					<text><![CDATA[             /          /]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement x="0" y="0" width="443" height="18" backcolor="#0033FF" uuid="f6bdcb4b-ae9c-4128-8391-5db49079baa7"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="17" y="0" width="411" height="18" forecolor="#FFFFFF" uuid="81be2e28-ef95-4e1d-a7ff-e26369d40f36"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Calibri" size="13" isBold="true"/>
+					</textElement>
+					<text><![CDATA[ENTRADA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="17" y="118" width="168" height="63" uuid="a64ea18d-c126-4e5f-a92d-b52da4494d9a"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+					</box>
+					<text><![CDATA[]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="214" y="100" width="214" height="15" forecolor="#FFFFFF" backcolor="#0033FF" uuid="39a63b00-3d81-45cb-b8b1-e15039fb02ad"/>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font fontName="Calibri" size="10" isBold="true" isUnderline="true"/>
+					</textElement>
+					<text><![CDATA[Nombre y Firma de Destinatario]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="17" y="40" width="168" height="20" uuid="2189e621-764f-445b-a7e8-07f5e0185f50"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getOrigen().getNombre()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="17" y="78" width="168" height="20" uuid="9b46e7ab-8bf2-4cf9-ab4c-0bb5099590ee"/>
+					<box>
+						<pen lineWidth="0.75" lineStyle="Dotted"/>
+					</box>
+					<textFieldExpression><![CDATA[$P{mov}.getDestino().getNombre()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="214" y="140" width="213" height="19" uuid="1a571137-3d7c-4133-bb76-21b38772b98b"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dotted"/>
+						<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center"/>
+					<textFieldExpression><![CDATA[$P{mov}.getEmpleado().getNombre() + " " +$P{mov}.getEmpleado().getApellidos()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+   <!--  BOTONES GUARDAR-CANCELAR ------------------------------------------------------------------ -->
+   <div th:fragment="botones (obj)">
+      <a class="btn btn-sm btn-primary" href="#" onclick="this.parentNode.parentNode.submit();"><i class="fas fa-save"></i> Guardar</a> 
+      <a class="btn btn-sm btn-danger" th:href="${obj}+ @{'/listado'}"><i class="fas fa-ban"></i> Cancelar</a>
+   </div>
+
+   <!--  BOTONES GUARDAR-CANCELAR ------------------------------------------------------------------ -->
+   <div th:fragment="botonesv2 (obj)">
+      <div class="form-group row">
+         <div class="col-sm-6">
+            <div class="btn btn-sm btn-primary">
+               <i class="fas fa-save"></i>
+               <input type="submit" value="Guardar" class="btn btn-sm btn-primary">
+            </div>
+            
+            <div class="btn btn-sm btn-danger">
+               <i class="fas fa-ban"></i>
+               <a class="btn btn-sm btn-danger" th:href="${obj}+ @{'/listado'}"> Cancelar</a>
+            </div>
+            
+            
+         </div>
+      </div>
+   </div>
+
+   <!--  BOTON REGRESAR----------------------------------------------------------------------------- -->
+   <div th:fragment="regresar (obj)">
+      <a class="btn btn-lg btn-light text-info font-weight-light" th:href="${obj}+ @{'/listado'}"><i class="fas fa-hand-point-left"></i>
+         Regresar</a>
+   </div>
+
+   <!--  BOTON AGREGAR------------------------------------------------------------------------------- -->
+   <div th:fragment="agregar (obj)">
+      <h4>
+         <a class="btn btn-success" th:href="${obj}+@{/form}"><i class="far fa-plus-square"></i> Agregar</a>
+      </h4>
+   </div>
+
+   <!--  BOTONES DE ACCION---------------------------------------------------------------------------- -->
+   <div th:fragment="acciones (url,obj)">
+      <a class="btn btn-primary btn-sm" th:href="${url}+@{/form/}+${obj.id}" data-toggle="tooltip" data-placement="top"
+         title="Editar Registro"><i class="far fa-edit"></i></a> <a class="btn btn-danger btn-sm" th:href="${url}+@{/eliminar/}+${obj.id}"
+         onclick="return confirm('Estas seguro de eliminar registro?');" data-toggle="tooltip" data-placement="top" title="Borrar Registro"><i
+         class="far fa-trash-alt"></i></a>
+   </div>
+   
+   <!--  BOTONES DE ACCION MOVACTIVOS---------------------------------------------------------------------------- -->
+   <div th:fragment="accionesMov (url,obj)">
+      <a class="btn btn-primary btn-sm" th:href="${url}+@{/form/}+${obj.id}" data-toggle="tooltip" data-placement="top"
+         title="Editar Registro"><i class="far fa-edit"></i></a> 
+      <a class="btn btn-info btn-sm" th:href="${url}+@{/reporte/}+${obj.id}" data-toggle="tooltip" data-placement="top"
+         title="Imprimir Reporte" target="blank"><i class="far fa-clipboard"></i></a>
+      <a class="btn btn-secondary btn-sm" th:href="${url}+@{/anexar/}+${obj.id}" data-toggle="tooltip" data-placement="top"
+         title="Anexar Evidencia"><i class="fas fa-upload"></i></a>
+       <a class="btn btn-warning btn-sm" th:href="${url}+@{/visualizar/}+${obj.id}" data-toggle="tooltip" data-placement="top"
+         title="Visualizar Evidencia" target="blank"><i class="fas fa-eye"></i></a>
+      <a class="btn btn-danger btn-sm" th:href="${url}+@{/eliminar/}+${obj.id}" onclick="return confirm('Estas seguro de eliminar registro?');" 
+      	 data-toggle="tooltip" data-placement="top" title="Borrar Registro"><i class="far fa-trash-alt"></i></a>
+         
+        
+   </div>
+   
+</body>
+</html>

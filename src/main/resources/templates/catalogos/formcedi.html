@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../static/css/all.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            
+            <form th:action="@{/cedis/form}" th:object="${cedi}" method="post">
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2">
+                     <label class="col-form-label">Nombre</label>
+                  </h5>
+                  <div class="col-sm-6">
+                     <input th:field="*{nombre}" type="text" class="form-control" th:errorclass="'form-control alert-danger'"> <small
+                        class="form-text text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+                  </div>
+               </div>
+
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2">
+                     <label class="col-form-label">UOP</label>
+                  </h5>
+                  <div class="col-sm-6">
+                     <input th:field="*{uop}" type="text" class="form-control" th:errorclass="'form-control alert-danger'"> <small
+                        class="form-text text-danger" th:if="${#fields.hasErrors('uop')}" th:errors="*{uop}"></small>
+                  </div>
+               </div>
+
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2">
+                     <label class="col-form-label">Domicilio</label>
+                  </h5>
+                  <div class="col-sm-6">
+                     <input th:field="*{domicilio}" type="text" class="form-control" th:errorclass="'form-control alert-danger'"> <small
+                        class="form-text text-danger" th:if="${#fields.hasErrors('domicilio')}" th:errors="*{domicilio}"></small>
+                  </div>
+               </div>
+
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2">
+                     <label class="col-form-label">Telefono</label>
+                  </h5>
+                  <div class="col-sm-6">
+                     <input th:field="*{telefono}" type="text" class="form-control" th:errorclass="'form-control alert-danger'"> <small
+                        class="form-text text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+                  </div>
+               </div>
+               <div th:replace="layout/btnform :: botones (obj='/cedis')"></div>
+            </form>
+            
+         </div>
+      </div>
+   </div>
+</body>
+</html>

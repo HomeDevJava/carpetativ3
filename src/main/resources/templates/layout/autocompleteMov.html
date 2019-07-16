@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+   <script type="text/javascript" th:fragment="javascript">
+   $(document).ready(function() {
+		
+		$("#buscar_equipo").autocomplete({
+
+		 	 source : function(req, res) {
+				$.ajax({
+					url : "/reparaciones/cargar-equipos/"+req.term,
+					dataType : "json",
+					data : {
+						term : req.term
+					},
+					success : function(data) {
+						res($.map(data, function(item) {
+							
+							return {
+								value : item.id,
+								label : item.serie,
+								afijo : item.afijo,
+								modelo: item.modelo.nombre
+							};
+						}));
+					},
+				});
+			},
+			
+			select : function(event, ui) {
+				var linea=$("#plantillaItemsMov").html();
+				
+				linea= linea.replace(/{ID}/g, ui.item.value);
+				linea= linea.replace(/{SERIE}/g, ui.item.label);
+				linea= linea.replace(/{AFIJO}/g, ui.item.afijo);
+				linea= linea.replace(/{MODELO}/g, ui.item.modelo);
+				
+				$("#cargarItemEquipos tbody").append(linea);
+
+				return false;
+			}  
+		})
+		
+		//despues de enviar los datos del formulario eliminamos la tabla plantilla
+		$("form").submit(function(){
+			$('#tabla1').remove();
+			$('#plantillaItemsMov').remove();
+			return;
+		});
+	});
+   
+   var itemHelper={
+		   eliminaLinea:function(id){
+			   $("#row_"+id).remove();
+		   }
+   }
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.thymeleaf.org/spring-data" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold">
+         	<span th:text=" ${titulo}"></span>
+         	 <form class="form-inline my-2 my-lg-0 float-right"  th:action="@{/equipos/listado}">
+               <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+         </div>
+         <div class="card-body">
+                           
+            <div th:replace="layout/btnform :: agregar (obj='/equipos')"></div>
+            
+            
+            
+            
+            <div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">Serie</th>
+                     <th class="col-auto">Activo Fijo</th>
+                     <th class="col-auto">Modelo</th>
+                     <th class="col-auto">Acciones</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr th:each="equipo : ${lista}">
+                     <td class="text-info font-weight-bold"><a class="btn btn-sm btn-warning" th:text="${equipo.id}" th:href="@{/equipos/ver/}+${equipo.id}"></a></td>
+                     <td th:text="${equipo.serie}"></td>
+                     <td th:text="${equipo.afijo}"></td>
+                     <td th:text="${equipo.modelo.nombre}"></td>
+                     <td class="text-center">
+                        <div th:replace="layout/btnform :: acciones(url='/equipos',obj=${equipo})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <div th:replace="layout/paginator-nav :: newpaginator"></div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.thymeleaf.org/spring-data" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../static/css/all.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container-fluid py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <div th:replace="layout/btnform :: agregar (obj='/cedis')"></div>
+			<div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">Cedis</th>
+                     <th class="col-auto">UOP</th>
+                     <th class="col-auto">Domicilio</th>
+                     <th class="col-auto">Telefono</th>
+                     <th class="col-auto">Acciones</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr th:each="cedi : ${lista}">
+                     <td th:text="${cedi.id}" class="text-info font-weight-bold"></td>
+                     <td th:text="${cedi.nombre}"></td>
+                     <td th:text="${cedi.uop}"></td>
+                     <td th:text="${cedi.domicilio}"></td>
+                     <td th:text="${cedi.telefono}"></td>
+                     <td class="text-center">
+                        <div th:replace="layout/btnform :: acciones(url='/cedis',obj=${cedi})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+			<div th:replace="layout/paginator-nav :: newpaginator"></div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>
