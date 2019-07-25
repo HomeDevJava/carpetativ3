@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sd="http://www.thymeleaf.org/spring-data" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+<link rel="stylesheet" href="../../static/css/all.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container-fluid py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <div th:replace="layout/btnform :: agregar (obj='/siniestros')"></div>
+			<div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-white text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">Fecha</th> 
+                     <th class="col-auto">Ruta</th> 
+                     <th class="col-auto">#Empleado</th>
+                     <th class="col-auto">Nombre del Empleado</th>
+                     <th class="col-auto">Cedis</th>
+                     <th class="col-auto">Tipo de Siniestro</th>    
+                     <th class="col-auto">Acciones</th>                     
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr th:each="siniestro : ${lista}">
+                     <td th:text="${siniestro.id}" class="text-info font-weight-bold"></td>
+                     <td th:text="${siniestro.fecha}"></td>
+                     <td th:text="${siniestro.ruta}"></td>
+                     <td th:text="${siniestro.numempleado}"></td>
+                     <td th:text="${siniestro.nomempleado}"></td>
+                     <td th:text="${siniestro.cedis.nombre}"></td>
+                     <td th:text="${siniestro.tiposiniestro.descripcion}"></td>
+                     <td class="text-center">
+                        <div th:replace="layout/btnform :: acciones(url='/siniestros',obj=${siniestro})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+			<div th:replace="layout/paginator-nav :: newpaginator"></div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>
