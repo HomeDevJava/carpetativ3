@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header bg-light text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <form th:action="@{/siniestros/anexar}" th:object="${siniestro}" method="post" enctype="multipart/form-data">
+               <div class="form-group row">
+                  <h5 class="col-3 mx-3"><label class="col-form-label">Acta de Hechos</label></h5>
+                  <div class="col-sm-6">
+                     <input id="file1" name="file1" type="file" class="form-control" />                     
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="col-3 mx-3"><label class="col-form-label">Acta MP</label></h5>
+                  <div class="col-sm-6">
+                     <input id="file2" name="file2" type="file" class="form-control" />                     
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="col-3 mx-3"><label class="col-form-label">IFE</label></h5>
+                  <div class="col-sm-6">
+                     <input id="file3" name="file3" type="file" class="form-control" />                     
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="col-3 mx-3"><label class="col-form-label">Formato descuento</label></h5>
+                  <div class="col-sm-6">
+                     <input id="file4" name="file4" type="file" class="form-control" />                     
+                  </div>
+               </div>
+               
+              <div th:replace="layout/btnform :: botones (obj='/siniestros')"></div>
+            </form>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

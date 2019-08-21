@@ -12,7 +12,7 @@
             <div th:replace="layout/btnform :: agregar (obj='/siniestros')"></div>
 			<div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
             <table class="table table-bordered table-hover table-striped">
-               <thead class="bg-secondary text-white text-center">
+               <thead class="bg-light  text-center">
                   <tr>
                      <th class="col-auto">Id</th>
                      <th class="col-auto">Fecha</th> 
@@ -34,7 +34,7 @@
                      <td th:text="${siniestro.cedis.nombre}"></td>
                      <td th:text="${siniestro.tiposiniestro.descripcion}"></td>
                      <td class="text-center">
-                        <div th:replace="layout/btnform :: acciones(url='/siniestros',obj=${siniestro})"></div>
+                        <div th:replace="layout/btnform :: accionesSin(url='/siniestros',obj=${siniestro})"></div>
                      </td>
                   </tr>
                </tbody>

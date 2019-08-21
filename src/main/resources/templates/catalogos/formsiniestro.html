@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <form id="form" name="form" th:object="${siniestro}" method="post" th:action="@{/siniestros/form}">
+
+               <div class="form-group row">
+                  
+                  <div class=" form-group col-sm-2">
+                     <label class="col-form-label">Fecha</label> 
+                     <input th:field="*{fecha}" type="date" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{nombre}"></small>
+                  </div>
+
+                  <div class=" form-group col-sm-2">
+                     <label class="col-form-label">ruta</label> 
+                     <input th:field="*{ruta}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('ruta')}" th:errors="*{ruta}"></small>
+                  </div>
+
+                  <div class="col-sm-2">
+                     <label class="col-form-label">#Empleado</label> 
+                     <input th:field="*{numempleado}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('numempleado')}" th:errors="*{numempleado}"></small>
+                  </div>
+
+                  <div class="col-sm-6">
+                     <label class="col-form-label">Nombre de Empleado</label> 
+                     <input th:field="*{nomempleado}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('nomempleado')}" th:errors="*{nomempleado}"></small>
+                  </div>
+
+                  <div class="form-group col-sm-4">
+                     <label class="col-form-label">Cedis</label> 
+                     <select class="form-control" th:field="*{cedis}">
+                        <option th:each="m : ${listacedis}" th:value="${m.id}" th:text="${m.nombre}"></option>
+                     </select> 
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('cedis')}" th:errors="*{cedis}"></small>
+                  </div>
+
+                  <div class="form-group col-sm-4">
+                     <label class="col-form-label">Tipo de Siniestro</label> 
+                     <select class="form-control" th:field="*{tiposiniestro}">
+                        <option th:each="m : ${listasiniestros}" th:value="${m.id}" th:text="${m.descripcion}"></option>
+                     </select> 
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('tiposiniestro')}" th:errors="*{tiposiniestro}"></small>
+                  </div>
+
+                  <div class="col-sm-4">
+                     <label class="col-form-label">Aviso de Baja</label> 
+                     <input th:field="*{aviso}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('aviso')}" th:errors="*{aviso}"></small>
+                  </div>
+
+                  <div class="col-sm-6">
+                     <label class="col-form-label">Nota</label>
+                     <textarea th:field="*{notas}" class="form-control" th:errorclass="'form-control alert-danger'"></textarea>
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('notas')}" th:errors="*{notas}"></small>
+                  </div>
+                  
+                  <div class="form-group col-sm-6">
+                     <label class="col-form-label">Buscar Equipo</label> 
+                     <input type="text" name="buscar_equipo" id="buscar_equipo" class="form-control" />
+                  </div>
+               </div>
+
+               <script type="text/javascript" th:replace="layout/autocompleteMov :: javascript"></script>
+               <table th:replace="layout/movactivo-items :: itemsMovactivos"></table>
+
+               <table id="cargarItemEquipos" class="table table-sm table-striped table-hover">
+                  <thead>
+                     <tr>
+                        <th class="col-auto">Serie</th>
+                        <th class="col-auto">Activo Fijo</th>
+                        <th class="col-auto">Modelo</th>
+                        <th class="col-auto">Acciones</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr th:each="linea : ${siniestro.items}">
+                        <td th:text="${linea.equipo.serie}"></td>
+                        <td th:text="${linea.equipo.afijo}"></td>
+                        <td th:text="${linea.equipo.modelo.nombre}"></td>
+                        <td><a class="btn btn-sm btn-danger" th:href="@{/siniestros/eliminaritem/}+${linea.id}"
+                           onclick="return confirm('Estas seguro de eliminar registro?');"><i class="far fa-trash-alt"></i></a>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+
+               <div class="my-3" th:if="${!#sets.isEmpty(siniestro.id)}">
+                  <table class="table">
+                     <thead class="text-center">
+                        <tr>
+                           <th class="col-auto">Acta de Hechos</th>
+                           <th class="col-auto">Acta MP</th>
+                           <th class="col-auto">IFE</th>
+                           <th class="col-auto">Formato Descto</th>
+                        </tr>
+                     </thead>
+                     <tbody class="text-center">
+                        <tr>
+                           <td>                              
+							  <a th:href="@{/siniestros/visualizar/actahechos/}+*{id}" class="btn btn-sm btn-info" th:if="${!#sets.isEmpty(siniestro.actahechos)}"><i class="fas fa-file-pdf"></i></a>                              
+                           </td>
+                           <td>                              
+                              <a th:href="@{/siniestros/visualizar/actamp/}+*{id}" target="blank"  class="btn btn-sm btn-info" th:if="${!#sets.isEmpty(siniestro.actamp)}"><i class="fas fa-file-pdf"></i></a>                              
+                           </td>
+                           <td>                              
+                              <a th:href="@{/siniestros/visualizar/ife/}+*{id}" class="btn btn-sm btn-info" th:if="${!#sets.isEmpty(siniestro.ife)}"><i class="fas fa-file-pdf"></i></a>                              
+                           </td>
+                           <td>                              
+                              <a th:href="@{/siniestros/visualizar/ftdesc/}+*{id}" class="btn btn-sm btn-info" th:if="${!#sets.isEmpty(siniestro.formatodesc)}"><i class="fas fa-file-pdf"></i></a>
+                           </td>
+                        </tr>
+                     </tbody>
+                  </table>
+
+               </div>
+
+               <div th:replace="layout/btnform :: botonesv2 (obj='/siniestros')"></div>
+
+            </form>
+
+         </div>
+      </div>
+   </div>
+</body>
+</html>

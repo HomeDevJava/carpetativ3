@@ -37,7 +37,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="92" splitType="Stretch">
 			<rectangle>
 				<reportElement x="125" y="0" width="327" height="61" backcolor="#EEEAEA" uuid="2f63ecef-720d-47d2-a97e-925474b476ee"/>
 				<graphicElement>
@@ -90,6 +90,10 @@ ACTIVOS FIJOS]]></text>
 					<textFieldExpression><![CDATA[$P{mov}.getId()]]></textFieldExpression>
 				</textField>
 			</frame>
+			<image scaleImage="FillFrame">
+				<reportElement stretchType="RelativeToTallestObject" x="2" y="0" width="120" height="61" uuid="b4a5816e-6268-491f-8efa-afd84e5a57ce"/>
+				<imageExpression><![CDATA["http://localhost:8080/images/GEPP.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<detail>

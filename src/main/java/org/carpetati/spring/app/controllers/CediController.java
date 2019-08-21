@@ -33,7 +33,7 @@ public class CediController {
 
 	@RequestMapping("/form")
 	public String crear(Model m) {
-		m.addAttribute("titulo", "Cedis.- Fromulario de Alta");
+		m.addAttribute("titulo", "Cedis.- Formulario de Alta");
 		m.addAttribute("cedi", new Cedi());
 		return "catalogos/formcedi";
 	}

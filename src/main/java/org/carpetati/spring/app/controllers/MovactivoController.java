@@ -138,7 +138,6 @@ public class MovactivoController {
 		}
 	}
 
-	
 	@GetMapping("/reporte/{id}")
 	public void reporte(@PathVariable Long id, HttpServletResponse response) throws JRException, SQLException, IOException {
 		InputStream file=  getClass().getResourceAsStream("/jasper/BlankA4.jrxml");
