@@ -1,6 +1,7 @@
 package org.carpetati.spring.app.controllers;
 
 import java.util.List;
+
 import org.carpetati.spring.app.entity.Cedi;
 import org.carpetati.spring.app.entity.Empleado;
 import org.carpetati.spring.app.entity.Equipo;
@@ -8,9 +9,9 @@ import org.carpetati.spring.app.entity.ItemReparacion;
 import org.carpetati.spring.app.entity.Reparacion;
 import org.carpetati.spring.app.entity.Status;
 import org.carpetati.spring.app.entity.TipoProblema;
-import org.carpetati.spring.app.services.ICediServices;
 import org.carpetati.spring.app.services.IEmpleadoServices;
 import org.carpetati.spring.app.services.IEquipoServices;
+import org.carpetati.spring.app.services.IGenericServices;
 import org.carpetati.spring.app.services.IReparacionServices;
 import org.carpetati.spring.app.services.IStatusServices;
 import org.carpetati.spring.app.services.ITipoProblemaServices;
@@ -38,7 +39,7 @@ public class ReparacionController {
 	@Autowired	private IReparacionServices reparacionServices;
 	@Autowired	private IEquipoServices equipoServices;
 	@Autowired	private IStatusServices statusServices;
-	@Autowired	private ICediServices cediServices;
+	@Autowired	private IGenericServices<Cedi> cediServices;
 	@Autowired	private ITipoProblemaServices tipoProblemaServices;
 	@Autowired	private IEmpleadoServices empleadoServices;
 

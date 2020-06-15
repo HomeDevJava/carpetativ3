@@ -1,8 +1,9 @@
 package org.carpetati.spring.app.controllers;
 
+import org.carpetati.spring.app.entity.Cedi;
 import org.carpetati.spring.app.entity.Empleado;
-import org.carpetati.spring.app.services.ICediServices;
 import org.carpetati.spring.app.services.IEmpleadoServices;
+import org.carpetati.spring.app.services.IGenericServices;
 import org.carpetati.spring.app.services.IPuestoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -23,7 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class EmpleadoController {
 
 	@Autowired IEmpleadoServices empleadoServices;
-	@Autowired ICediServices cediServices;
+	@Autowired IGenericServices<Cedi> cediServices;
 	@Autowired IPuestoServices puestoServices;
 
 	@RequestMapping("/listado")

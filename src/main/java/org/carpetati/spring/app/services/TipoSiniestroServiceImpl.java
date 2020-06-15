@@ -4,11 +4,13 @@ import java.util.List;
 import org.carpetati.spring.app.dao.ITipoSiniestroDao;
 import org.carpetati.spring.app.entity.TipoSiniestro;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TipoSiniestroServiceImpl implements ITipoSiniestroServices{
+public class TipoSiniestroServiceImpl implements IGenericServices<TipoSiniestro>{
 
 	@Autowired ITipoSiniestroDao tipoSiniestroDao;
 	
@@ -40,6 +42,11 @@ public class TipoSiniestroServiceImpl implements ITipoSiniestroServices{
 	@Override
 	public TipoSiniestro findById(Long id) {
 		return tipoSiniestroDao.findById(id).orElse(null);
+	}
+
+	@Override
+	public Page<TipoSiniestro> findAll(Pageable p) {
+		return tipoSiniestroDao.findAll(p);
 	}
 
 }

@@ -2,13 +2,14 @@ package org.carpetati.spring.app.controllers;
 
 import java.io.IOException;
 import javax.servlet.http.HttpServletResponse;
+import org.carpetati.spring.app.entity.Cedi;
 import org.carpetati.spring.app.entity.Equipo;
 import org.carpetati.spring.app.entity.ItemSiniestro;
 import org.carpetati.spring.app.entity.Siniestro;
-import org.carpetati.spring.app.services.ICediServices;
+import org.carpetati.spring.app.entity.TipoSiniestro;
 import org.carpetati.spring.app.services.IEquipoServices;
+import org.carpetati.spring.app.services.IGenericServices;
 import org.carpetati.spring.app.services.ISiniestrosServices;
-import org.carpetati.spring.app.services.ITipoSiniestroServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -30,8 +31,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class SiniestrosController {
 
 	@Autowired private ISiniestrosServices siniestrosServices;
-	@Autowired private ICediServices cediServices;
-	@Autowired private ITipoSiniestroServices tipoSiniestroServices;
+	@Autowired private IGenericServices<Cedi> cediServices;
+	@Autowired private IGenericServices<TipoSiniestro> tipoSiniestroServices;
 	@Autowired private IEquipoServices equipoServices;
 
 	@GetMapping(value = "/listado")

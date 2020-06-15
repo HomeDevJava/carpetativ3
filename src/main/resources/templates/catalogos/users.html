@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}"
+xmlns:sd="http://www.thymeleaf.org/spring-data">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container-fluid py-4">
+      <div class="card">
+         <div class="card-header text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <div th:replace="layout/btnform :: agregar (obj='/users')"></div>
+			<div class="float-right">Show <span sd:page-size-selector="javascript"></span> entries</div>
+            <table class="table table-bordered table-hover table-striped">
+               <thead class="bg-secondary text-secondary text-center">
+                  <tr>
+                     <th class="col-auto">Id</th>
+                     <th class="col-auto">Usuario</th>
+                     <th class="col-auto">Empleado</th>
+                     <th class="col-auto">Activo</th>
+                     <th class="col-auto">Acciones</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr class="text-center font-weight-light" th:each="user : ${lista}">
+                     <td th:text="${user.id}" class="text-info font-weight-bold"></td>
+                     <td th:text="${user.username}"></td>
+                     <td th:text="${user.empleado.nombre} +' ' +${user.empleado.apellidos}"></td>
+                     <td th:text="${user.active}"></td>
+                     <td class="text-center">
+                        <div th:replace="layout/btnform :: acciones(url='/users',obj=${user})"></div>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+            <div th:replace="layout/paginator-nav :: newpaginator"></div>
+         </div>
+      </div>
+   </div>
+</body>
+</html>

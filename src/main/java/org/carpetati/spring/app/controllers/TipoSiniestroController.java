@@ -1,7 +1,7 @@
 package org.carpetati.spring.app.controllers;
 
 import org.carpetati.spring.app.entity.TipoSiniestro;
-import org.carpetati.spring.app.services.ITipoSiniestroServices;
+import org.carpetati.spring.app.services.IGenericServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @SessionAttributes("tipoSiniestro")
 public class TipoSiniestroController {
 
-	@Autowired ITipoSiniestroServices tipoSiniestroServices;
+	@Autowired IGenericServices<TipoSiniestro> tipoSiniestroServices;
 	
 	@RequestMapping(value = "/listado")
 	public String homePage(Model m) {

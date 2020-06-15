@@ -5,13 +5,16 @@ import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.Collections;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
+
+import org.carpetati.spring.app.entity.Cedi;
 import org.carpetati.spring.app.entity.Equipo;
 import org.carpetati.spring.app.entity.ItemMovactivo;
 import org.carpetati.spring.app.entity.Movactivo;
-import org.carpetati.spring.app.services.ICediServices;
 import org.carpetati.spring.app.services.IEmpleadoServices;
 import org.carpetati.spring.app.services.IEquipoServices;
+import org.carpetati.spring.app.services.IGenericServices;
 import org.carpetati.spring.app.services.IMovactivoServices;
 //import org.carpetati.spring.app.util.paginator.PageRender;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import net.sf.jasperreports.engine.DefaultJasperReportsContext;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -47,7 +51,7 @@ public class MovactivoController {
 
 	@Autowired private IMovactivoServices movactivoServices;
 	@Autowired private IEmpleadoServices empleadoServices;
-	@Autowired private ICediServices cediServices;
+	@Autowired private IGenericServices<Cedi> cediServices;
 	@Autowired private IEquipoServices equipoServices;
 	//@Autowired private DataSource dataSource;
 

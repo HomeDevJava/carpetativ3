@@ -64,6 +64,15 @@
                   </div>
                </li>
                <li class="nav-item"><a class="nav-link disabled" href="#">Reportes</a></li>
+               
+               <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" id="navbarDropdown2">Tools</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <a class="dropdown-item" th:href="@{/users/listado}"><i class="fas fa-hammer"></i> Usuarios</a>
+                    <a class="dropdown-item" th:href="@{/roles/listado}"><i class="fas fa-book"></i> Roles</a>
+                  </div>   
+               </li>
+               
             </ul>
            <!--  <form class="form-inline my-2 my-lg-0">
                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

@@ -1,7 +1,7 @@
 package org.carpetati.spring.app.controllers;
 
 import org.carpetati.spring.app.entity.Cedi;
-import org.carpetati.spring.app.services.ICediServices;
+import org.carpetati.spring.app.services.IGenericServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -20,8 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @SessionAttributes("cedi")
 public class CediController {
 
-	@Autowired
-	ICediServices cediServices;
+	@Autowired IGenericServices<Cedi> cediServices;
 
 	@RequestMapping(value = "/listado")
 	public String homePage(Model m,  @RequestParam(defaultValue="0") int page,  @RequestParam(defaultValue="10") int size) {

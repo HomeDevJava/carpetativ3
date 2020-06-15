@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+<link rel="stylesheet" href="../../static/css/bootstrap.min.css">
+</head>
+<body>
+   <div layout:fragment="content" class="container py-4">
+      <div class="card">
+         <div class="card-header bg-light text-primary font-weight-bold" th:text="${titulo}"></div>
+         <div class="card-body">
+            <form th:action="@{/users/form}" th:object="${user}" method="post">
+            
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2"><label class="col-form-label">Username</label></h5>
+                  <div class="col-sm-6">
+                     <input th:field="*{username}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small>
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2"><label class="col-form-label">Password</label></h5>
+                  <div class="col-sm-6">
+                     <input th:field="${user.password}" type="text" class="form-control" th:errorclass="'form-control alert-danger'">
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2"><label class="col-form-label">Empleado</label></h5>
+                  <div class="col-sm-6">                     
+                     <select class="form-control" th:field="*{empleado}">
+                        <option th:each="p : ${listaempleados}" th:value="${p.id}" th:text="${p.nombre +' '+ p.apellidos}"></option>
+                     </select>
+                     <small class="form-text text-danger" th:if="${#fields.hasErrors('empleado')}" th:errors="*{empleado}"></small>
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2">
+                     <label class="form-check-label">Habilitado</label>
+                  </h5>
+                  <div class="col-sm-6">
+                  <div class="custom-control custom-radio custom-control-inline">
+                     <input type="radio" value="1" id="customRadio1" th:field="*{active}" class="custom-control-input"> 
+                     <label class="custom-control-label" for="customRadio1">Activo</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                     <input type="radio" value="0" id="customRadio2"  th:field="*{active}" class="custom-control-input"> 
+                     <label class="custom-control-label" for="customRadio2">Inactivo</label>
+                  </div>
+                  </div>
+               </div>
+               
+               <div class="form-group row">
+                  <h5 class="mx-3 col-2">
+                     <label class="form-check-label">Roles</label>
+                  </h5>
+                  <div class="col-sm-6">
+                     <select class="custom-control custom-select custom-control-inline" multiple="multiple" th:field="*{roles}">
+                         <option th:each="r : ${listaroles}" th:value="${r.id}" th:text="${r.role}"></option>
+                        
+                     </select>
+                  </div>
+               </div>
+               
+               
+                              
+               <div th:replace="layout/btnform :: botones (obj='/users')"></div>
+            </form>
+         </div>
+      </div>
+   </div>
+</body>
+</html>
